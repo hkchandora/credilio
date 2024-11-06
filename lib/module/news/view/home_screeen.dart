@@ -52,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   getData() async {
+    /// Created a stream builder
     return StreamBuilder<NewsResponseBean>(
       stream: newsBloc.newsList,
       builder: (context, AsyncSnapshot<NewsResponseBean> snapshot) {
@@ -94,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Expanded(
                   child: Row(
                     children: [
+                      /// If image url is null than we'll show a common image
                       CachedNetworkImage(
                         imageUrl: response.articles![index].urlToImage ??
                             "https://cdn.vox-cdn.com/thumbor/HrCFTBOBMrC5EZQO1at0ltS40K8=/0x530:7398x4403/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/23353770/1239503237.jpg",

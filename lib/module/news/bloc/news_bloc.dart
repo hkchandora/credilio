@@ -8,15 +8,18 @@ import 'package:url_launcher/url_launcher.dart';
 class NewsBloc {
   NewsRepository repository = NewsRepository();
 
+  /// Created a SteamController
   final newsController = StreamController<List<Articles>>.broadcast();
+
+  /// Stream the data from the stream controller
   get newsList => newsController.stream;
 
   Future<NewsResponseBean> getNewsData(NewsRequestBean newsRequestBean) async {
     NewsResponseBean wrapper = await repository.getNewData(newsRequestBean);
     if (wrapper.isSuccessFull!) {
-      newsController.sink.add(wrapper.articles!);
+      newsController.sink.add(wrapper.articles!); /// Sink the data into StreamController
     } else {
-      newsController.sink.addError(wrapper.errorMessage!);
+      newsController.sink.addError(wrapper.errorMessage!); /// Sink the error into StreamController
     }
     return wrapper;
   }
@@ -31,6 +34,6 @@ class NewsBloc {
   }
 
   void dispose() {
-    newsController.close();
+    newsController.close(); /// Dispose the streamController
   }
 }

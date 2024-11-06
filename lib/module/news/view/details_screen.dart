@@ -23,6 +23,7 @@ class DetailsScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
+          /// If image url is null than we'll show a common image
           CachedNetworkImage(
             imageUrl: articles!.urlToImage ??
                 "https://cdn.vox-cdn.com/thumbor/HrCFTBOBMrC5EZQO1at0ltS40K8=/0x530:7398x4403/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/23353770/1239503237.jpg",
